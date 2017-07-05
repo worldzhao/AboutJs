@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script type="text/javascript">
+/*
+	function unique(songs){
+      let unique = {};
+      songs.forEach(function(song){
+        unique[JSON.stringify(song)]=song;//键名不会重复
+      })
+      songs = Object.keys(unique).map(function(u){ 
+      //Object.keys()返回对象的所有键值组成的数组，map方法是一个遍历方法，返回遍历结果组成的数组.将unique对象的键名还原成对象数组
+        return JSON.parse(u);
+      })
+      return songs;
+    }
+
+    var arr1 = [{x:1,y:2,z:3},{x:2,y:1,z:2},{y:2,x:1,z:3}];//arr[0]与arr[2]是相同对象但属性顺序不同 JSON.stringify字符串化结果不一致去重失败
+
+    var arr = [{x:1,y:2,z:3},{x:2,y:1,z:2},{x:1,y:2,z:3}];//arr[0]与arr[2]为相同对象且属性顺序相同 去重成功
+
+    console.log(unique(arr1));
+
+    console.log(unique(arr));
+*/
+	function unique(songs){
+        let result = {};
+        let finalResult=[];
+        for(let i=0;i<songs.length;i++){
+            result[songs[i].name]=songs[i];//因为songs[i].name不能重复达到去重效果
+        }
+        console.log(result);//result: {"羽根":{name:"羽根",artist:"air"},"晴天":{name:"晴天",artist:"周杰伦"}}
+        //现在result内部都是不重复的对象了，只需要将其取出来转为数组即可
+        for(item in result){
+        	finalResult.push(result[item]);
+        }
+        return finalResult;
+    }
+	var songs = [
+            {name:"羽根",artist:"air"},
+            {name:"羽根",artist:"air"},
+            {name:"晴天",artist:"周杰伦"},
+            {name:"晴天",artist:"周杰伦"},
+            {artist:"周杰伦",name:"晴天"}
+        ];
+    console.log(songs);
+    console.log(unique(songs));;
+</script>

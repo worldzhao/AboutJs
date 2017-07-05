@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>事件绑定</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <div>我是第1个div</div>
+    <div>我是第2个div</div>
+    <div>我是第3个div</div>
+    <div>我是第4个div</div>
+    <div>我是第5个div</div>
+    <div>我是第6个div</div>
+    <div>我是第7个div</div>
+    <div>我是第8个div</div>
+    <div>我是第9个div</div>
+    <div>我是第10个div</div>
+
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var divs=document.getElementsByTagName('div');
+    		/*
+    		for(var i=0;i<divs.length;i++){
+    			divs[i].onclick=function(){
+    				alert('我是第'+i+"个div");
+    				//不论点击哪个都是  "我是第10个div"
+    				//事件绑定完后,触发事件时访问的全是全局作用域中的i
+    				//绑定完成后为什么i没有被释放,因为存在闭包 事件强行绑住了i
+    			}
+    		}
+    		*/
+
+    		/*法一:动态添加属性
+    		for(var i=0;i<divs.length;i++){
+    			divs[i].tag=i+1;//添加属性,实实在在的加上去了
+    			divs[i].onclick=function(){
+    				alert('我是第'+this.tag+"个div");
+    			}
+    		}
+    		*/
+
+    		/*
+    		//法二:闭包,与其说使用闭包倒不如说使用块级作用域 通过闭包
+    		for(var i=0;i<divs.length;i++){
+    			(function(j){//使用块级作用域,让闭包访问的都是j
+    				divs[i].onclick=function(){
+    					alert('我是第'+(j+1)+"个div");
+    				}
+    			})(i);
+    			
+    		}
+    		*/
+
+    		//法三:另一种形式,原理与法二基本一致,但没有法二清晰
+    		for(var i=0;i<divs.length;i++){
+    			divs[i].onclick=(function(j){
+    				return function(){
+    					alert('我是第'+(j+1)+"个div");
+    				}
+    			}(i));
+    			
+    		}
+    	}
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>给所有div和p进行相同操作</title>
+<style>
+	div{
+		width:200px;
+		height: 100px;
+		border: 1px solid yellow; 
+		margin: 5px;
+	}
+	p{
+		width:100px;
+		height: 50px;
+		border: 1px solid blue; 
+		margin: 5px;
+	}
+</style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+
+    <script type="text/javascript">
+    var divs= document.querySelectorAll('div');
+	var ps= document.querySelectorAll('p');
+	//现在我们要将所有div p的背景颜色设置为黑色
+	//傻方法:
+/*
+    for (var i = divs.length - 1; i >= 0; i--) {
+    	divs[i].style.backgroundColor="black";
+    }
+
+     for (var i = ps.length - 1; i >= 0; i--) {
+    	ps[i].style.backgroundColor="black";
+    }
+*/
+    //明明是一样的操作,我要用两个循环,笨!
+    //能不能把div和p全都放到一个数组里,对这一个数组进行循环就行了呢?
+/*
+    var arr=divs.concat(ps);//失败,如果divs与ps是数组 我们就返回了一个divs ps 二者拼接的数组
+    for (var i = arr.length - 1; i >= 0; i--) {
+    	arr[i].style.backgroundColor="black";
+    }
+
+    tips: 
+    var arr=[]; 
+    arr=arr.concat.apply(arr,divs) ;//伪数组转真数组
+
+    原理: arr.concat(divs[1],divs[2]...divs[n]);
+*/
+	var arr=[];
+	arr.push.apply(arr,divs);//这里没有改变this指向 而是通过apply将divs转为参数列表
+    //arr.push(divs)和上面有本质区别, 主要在参数,apply将第二个参数的数组拆成了每一个元素
+    //相当于arr.push(divs[1],divs[2],...,divs[10]);
+	arr.push.apply(arr,ps);
+
+
+    for (var i = arr.length - 1; i >= 0; i--) {
+    	arr[i].style.backgroundColor="black";
+    }
+    </script>
+</body>
+</html>
