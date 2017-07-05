@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function createCache() {
+            var keys = [];
+            function cache( key, value ) {
+
+                //这里直接将这个函数当作缓存对象,减少了创建对象的次数
+
+                //同时由于缓存属性都是直接加在这个对象上  且return出去了 可以直接通过cache['键名']获取缓存值 于是函数内部设置缓存即可
+
+                //分两个角度看:  当cache是对象是 他有缓存属性 用于查询
+                //当cache是方法时 他给自己(对象)设置添加缓存
+
+                //更简洁 jQuery的优美之处啊 巧夺天工
+
+                // 使用(key + " ") 是为了避免和原生（本地）的原型中的属性冲突
+                if ( keys.push( key + " " ) > 3 ) {
+                    // 只保留最新存入的数据
+                    delete cache[ keys.shift() ];
+                }
+                // 1 给 cache 赋值
+                // 2 把值返回
+                return (cache[ key + " " ] = value);
+            }
+            return cache;
+        }
+
+        var typeCache = createCache();
+
+        /*
+        typeCache("monitor","周娇娇");
+        console.log(typeCache["monitor"]);//这样是查不到的,因为存储的时候 加了" "
+        */
+
+        typeCache("monitor1","张学友"); 
+        console.log(typeCache["monitor1 "]);
+
+        typeCache("monitor2","刘德华");
+        console.log(typeCache["monitor2 "]);
+
+        typeCache("monitor3","彭于晏");
+        console.log(typeCache["monitor3 "]);
+
+        typeCache("monitor4","赵志文"); //这次再进行缓存,超出了限制,第一个缓存被干掉了
+
+        console.log(typeCache["monitor1 "]);
+
+
+//        console.log(typeCache["monitor "]);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

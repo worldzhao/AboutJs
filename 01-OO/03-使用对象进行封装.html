@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象编程举例</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p>我是第1个p元素</p>
+	<p>我是第2个p元素</p>
+	<p>我是第3个p元素</p>
+
+<script>
+    //使用函数将代码封装,使得复用性更高
+	//使用函数封装带来的问题:
+	//1.全局变量污染
+	//2.代码结构不够清晰,维护困难
+
+
+	//使用对象封装后的优势
+	//1.暴露在全局中的只有一个对象名,不会造成全局变量污染
+	//2.是用对象将代码进行功能模块化的划分,有利于日后的维护
+
+
+	//DRY
+    var zQuery={
+    	//使用zQuery对象属性根据功能对对象进行模块化
+
+    	//获取元素的zQuery属性对象
+    	getEle:{
+    		//1.获取元素的方法们
+    		tag:function(tagName){
+			    return document.querySelectorAll(tagName);
+		    },
+			id:function(id){
+				return document.getElementById(id);
+			}
+     	},
+
+     	//修改css样式的zQuery属性对象
+     	setCss:{
+     		//修改css样式的方法们
+     		setStyle:function(elems){
+				for(var i=0;i<elems.length;i++){
+					elems[i].style.border="1px solid red";
+				}
+	        }
+	        css:function(option){
+	        	//...
+	        }
+	        addClass:function(className){
+	        	//...
+	        }
+	    }
+		
+    };
+	var divs=zQuery.tag('div');
+	var ps=zQuery.tag('p');
+	zQuery.setStyle(divs);
+	zQuery.setStyle(ps);
+</script>
+</body>
+</html>

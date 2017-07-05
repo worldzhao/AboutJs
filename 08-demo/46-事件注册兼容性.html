@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>事件注册</title>
+<style>
+	.box{
+		background-color: red;
+		border: 1px solid #000;
+	}
+</style>
+</head>
+<body>
+    <div class="box">click me</div>
+
+    <script type="text/javascript">
+    	var div=document.querySelector('.box');
+    	/*进行兼容性处理 if能力检测 复用性差
+    	if(document.addEventListener){//功能最强大 
+    		div.addEventListener('click',function(){
+    			alert('hello,world');
+    		});
+    	}else if(document.attachEvent){//非标准特性 尽量不要使用
+    		div.attachEvent('click',function(){
+    			alert('hello,world');
+    		});
+    	}else{//支持最好
+    		div['onclick']=function(){
+    			alert('hello,world');
+    		}
+    	}
+
+ */   	
+
+ //封装函数
+ /*
+ 		function registeEvent(elem,type,handler){
+    		if(document.addEventListener){//功能最强大
+	    		elem.addEventListener(type,handler);
+	    	}else if(document.attachEvent){//非标准特性 尽量不要使用
+	    		elem.attachEvent(type,handler);
+	    	}else{//支持最好
+	    		elem['on'+type]=handler;
+	    	}
+    	}
+*/
+    	
+//现在仍然有一个缺陷,能力检测一次就够了,可是每次注册事件都需要检测
+
+//利用闭包,检测一次即可,
+       var registeEvent=(function  createEventRegister(){
+				if(document.addEventListener){
+		    		return function(elem,type,handler){
+		    			elem.addEventListener(type,handler);
+		    		}
+		    	}else if(document.attachEvent){
+		    		return function(elem,type,handler){
+		    			elem.attachEvent(type,function(){
+                            handler.call(elem,window.event);//attachEvent内部this指向window而不是触发对象
+                        });
+		    		}
+		    	}else{
+		    		return function(elem,type,handler){
+		    			elem['on'+type]=handler;
+		    		}
+		    	}
+       })()
+       registeEvent(div,"click",function(){
+    		alert('hello,world');
+    	})
+    </script>
+</body>
+</html>

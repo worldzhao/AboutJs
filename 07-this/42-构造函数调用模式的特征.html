@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>构造函数调用模式的特征</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+    <script type="text/javascript">
+    	function Person(name,age){
+    		this.name=name;
+    		this.age=age;
+    	}
+    	var p=new Person('zzw','18');
+
+    	//new关键字就做了一点微小的工作
+    	//var obj={};
+    	//obj.__proto__=Person.prototype;
+    	//Person.call(obj);
+    </script>>
+</body>
+</html>

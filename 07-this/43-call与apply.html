@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>call与apply</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+    <script type="text/javascript">
+    /*
+    	var p1={
+    		name:"赵志文",
+    		age:"18"
+    	}
+    	var name="周娇娇";
+    	function getName(){
+    		console.log(this.name,this);
+    	}
+    	getName();//周娇娇 window 函数调用,this指向window(非严格模式)
+    	getName.call(p1);//赵志文 Object 改变了getName内部的this指向,指向p1
+    	getName.apply(p1);//同上
+
+    */
+
+    function demo3(a,b){
+    	console.log(this.name+"吃了"+(a+b)+"个西瓜");
+    }
+
+    var name="zzw";
+
+    demo3(1,2);//函数调用模式 非严格模式下指向window zzw吃了3个西瓜
+
+    var obj={
+    	name:'zjj'
+    }
+
+    var obj1={
+        name:'sb'
+    }
+        
+    demo3.call(obj,4,5);//改变this指向为obj同时传参  zjj吃了9个西瓜
+    demo3.apply(obj1,[100,99]);//改变this指向为obj同时传参 sb吃了199个西瓜
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象编程举例</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p>我是第1个p元素</p>
+	<p>我是第2个p元素</p>
+	<p>我是第3个p元素</p>
+
+	<script>
+
+	//使用函数将代码封装,使得复用性更高
+	//使用函数封装带来的问题:
+	//1.全局变量污染
+	//2.代码结构不够清晰,维护困难
+		var divs=getElements('div');
+		var ps=getElements('p');
+
+		setStyle(divs);
+		setStyle(ps);
+
+		function getElements(tagName){
+			var elems=document.querySelectorAll(tagName);
+			return elems;
+		}
+
+		function setStyle(elems){
+			for(var i=0;i<elems.length;i++){
+				elems[i].style.border="1px solid red";
+			}
+	    }
+	</script>
+</body>
+</html>

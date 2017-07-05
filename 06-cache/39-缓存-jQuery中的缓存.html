@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+
+<script type="text/javascript">
+	//缓存就是一个存放你曾经用过的东西,让你下次获取的速度更快
+    //可以是数组 可以是对象 在第一次获取后记得将其存放进缓存数组或对象
+    //后续再次获取就可以通过索引或键名直接获取  而无需 重复遍历 或 计算 或 调用函数
+    //缓存常常存放在闭包中,以保证安全,只对外提供接口
+
+    function createCache(){//不使用自执行函数创建块级作用域的原因是:
+    	//我们要多次创建这里面的内容(有多个缓存),而不是像原来一样仅仅创建一次
+
+    	var cache={};
+
+    	var index=[];//存放键名的数组,用于缓存过多时进行清理(因为缓存对象无法判断有多少个缓存在内)
+
+    	return function editCache(key,value){
+
+    		if(value===undefined){
+
+    			return cache[key];//如果不传value就是查询
+
+    		}else{
+
+    			cache[key]=value;//如果传了value就是设置
+
+    			index.push(key);
+
+    			if(index.length>=50){//当缓存的数量到达一个临界时(此处是50),删除最早的缓存
+
+    				var tempKey = index.shift();//获取键名  并 删除 index中的该键
+
+    				delete cache[tempKey];//删除cache内的属性
+
+    			}
+    		}
+    	} 
+    }
+
+    var eleCache=createCache();
+
+    var typeCache=createCache();//多次创建,每一个Cache都有自己的一个空间
+
+    var classCache=createCache();
+    
+    var eventCache=createCache();
+
+    eleCache("name","zhaozhiwen");//store
+
+    elemCache("name")//get
+
+    
+</script>
+</body>
+</html>

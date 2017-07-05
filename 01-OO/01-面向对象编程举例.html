@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象编程举例</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<p>我是第1个p元素</p>
+	<p>我是第2个p元素</p>
+	<p>我是第3个p元素</p>
+
+	<script>
+		//设置页面中div和p的边框为1px solid red
+		//1.面向过程方式
+		var divs=document.querySelectorAll('div');
+		var ps= document.querySelectorAll('p');
+
+		for(var i=0;i<divs.length;i++){
+			divs[i].style.border="1px solid red";
+		}
+
+		for(var i=0;i<ps.length;i++){
+			ps[i].style.border="1px solid red";
+		}
+		//编写代码的原则: DRY don't repeat yourself
+	</script>
+</body>
+</html>

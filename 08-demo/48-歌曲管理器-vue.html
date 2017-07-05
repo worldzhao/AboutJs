@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>歌曲管理器-vue</title>
+<style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 850px;
+            border: 1px solid #dad8d8;
+
+            /*height: 100%;*/
+        }
+        .songslist-main, .songslist-header {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        .songslist-header {
+            height: 30px;
+            border-bottom: 1px solid #dad8d8;
+            line-height: 30px;
+            background-color: #def;
+        }
+
+        .songslist-name {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-singer {
+            position: absolute;
+            left: 40%;
+            width: 50%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-option {
+            position: absolute;
+            left: 90%;
+            width: 10%;
+            height: 100%;
+        }
+
+        .songslist-main {
+            background-color: #fff;
+            height: 100%;
+        }
+        .songslist-main .songslist-name{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-main .songslist-singer{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-single {
+            height: 50px;
+        }
+    </style>
+    <script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+    
+<div class="container" id="box">
+    <div class="songslist-top">
+        <label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" v-model="newSong"/>
+        <label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" v-model="newSinger" />
+        <button id="btnAdd" @click="addSongs">添加</button>
+        <button id="btnRemove" @click="deleteSong">删除</button>
+    </div>
+
+    <div class="songslist-header">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+        <div class="songslist-option">操作</div>
+    </div>
+
+    <div class="songslist-main" id="c">
+        <div class="songslist-single" v-for="song in songs">
+            <div class="songslist-name">{{ song.songName }}</div>
+            <div class="songslist-singer">{{song.singer}}</div>
+            <div class="songslist-option" @click="deletesong(song)">X</div>
+        </div>
+	</div>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#box',
+		data:{
+			songs:[{songName:'羽根',singer:'麻枝准'},{songName:'夏影',singer:'夏影'}],
+			newSong:'',
+			newSinger:''
+		},
+		methods:{
+			addSongs(){
+				if(this.newSong==""||this.newSinger==""){return};
+				this.songs.push({songName:this.newSong,singer:this.newSinger})
+			},
+			deleteSong(){
+				this.songs.pop();
+			},
+			deletesong(song){
+				var index=this.songs.indexOf(song);
+				this.songs.splice(index,1);
+			}
+		}
+	})
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>打印参数</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+
+    <script type="text/javascript">
+    /*自己的傻瓜拼接字符串法
+    	function demo4(){
+    		var res="";
+    		for(var j=0;j<arguments.length;j++){
+    			if(j<arguments.length-1){
+    				res+=arguments[j]+"-";
+    			}else{
+    				res+=arguments[j];
+    			}
+    			
+    		}
+    		console.log(res);
+    	}
+    	demo4(1,2,3,"abc","zzw");//1-2-3-abc-zzw
+    */
+
+    //利用Array.prototype.join(),该方法内部的this指向调用他的数组
+    //var arr=[1,2,3,"abc","zzw"];
+    //console.log(arr.join("-"));//1-2-3-abc-zzw 返回一个字符串
+
+    //伪数组没有该方法,要借用数组,可以重新创建一个数组容纳参数,也可以直接借用数组方法
+
+/*创建数组容纳参数
+    function demo4(){
+    	var arr=[];
+    	for (var i = arguments.length - 1; i >= 0; i--) {
+    		arr.unshift(arguments[i]);
+    	}
+    	arr=arr.join('-');
+    	console.log(arr);
+    }
+    demo4(1,2,3,"abc","zzw");//1-2-3-abc-zzw
+*/
+
+//借用数组方法
+	function demo4(){
+		//return arguments.join("-");//要是能这样就好了,然而并不可以
+    	console.log(Array.prototype.join.call(arguments,"-"));
+
+    }
+    demo4(1,2,3,"abc","zzw");//1-2-3-abc-zzw
+
+    </script>
+</body>
+</html>

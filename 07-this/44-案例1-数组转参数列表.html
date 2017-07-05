@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Math.max</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+    <script type="text/javascript">
+    	//js中Math对象有个方法max,求出参数中的最大值
+    	//但是往往给定的是数组 ,怎么办捏
+    	//使用apply,这里就不改变this了,单纯数组转参数
+    	var arr=[1,20,157,76,84];
+    	var max=Math.max.apply(null,arr);
+    	console.log(max);
+    </script>
+</body>
+</html>
