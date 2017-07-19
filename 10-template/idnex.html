@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>mytemplate</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+
+<script type="text/javascript" src='render.js'></script>
+
+<script type="text/template" id='template'>
+	<a href="{{href}}">{{text}}</a>
+</script>
+
+<script type="text/javascript">
+	// 通过标签获取模版
+	var templateDom = document.querySelector("#template");
+
+	var template = templateDom.innerHTML;
+
+	console.log(str);//<a href="{{href}}">{{text}}</a>
+
+	// 准备对象
+	var context = {
+		href:"http://blog.hackerwen.tech",
+		text:"我的博客"
+	}
+
+	// 进行替换
+	var resultStr = render(template,context);
+
+	console.log(resultStr);
+
+	// 添加到界面上
+	document.body.innerHTML = resultStr;
+</script>
