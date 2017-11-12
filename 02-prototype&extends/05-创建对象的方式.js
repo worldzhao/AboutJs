@@ -1,8 +1,8 @@
 // 1.对象字面量法 (key:value,key:value)
 var zzw = {
-	name: "zzw",
-	age: '20',
-	major: 'cs'
+    name: "zzw",
+    age: '20',
+    major: 'cs'
 };
 // 缺点:冗余度过高,若需要创建属性一致的对象需要不断写对象字面量,不断重复
 
@@ -12,18 +12,18 @@ var zjj = new Object();
 zjj.name = "zjj";
 zjj.age = "20";
 zjj.major = "english";
-zjj.sing = function() {
-	console.log("i am zzw's gf");
+zjj.sing = function () {
+    console.log("i am zzw's gf");
 }
 zjj.sing();
 
 // 现在我们来封装一个简单的工厂函数
 function createObj(name, age, major) {
-	var obj = {};
-	obj.name = name;
-	obj.age = age;
-	obj.major = major;
-	return obj;
+    var obj = {};
+    obj.name = name;
+    obj.age = age;
+    obj.major = major;
+    return obj;
 }
 
 var lyf = createObj('lyf', '19', 'sorry');
@@ -32,12 +32,12 @@ console.log(lyf);
 
 // 构造函数法
 function Person(name, job) {
-	//默认隐含的操作,将new创建的对象赋值给this
-	this.name = name;
-	this.job = job;
-	this.sayHello = function() {
-		console.log('hello');
-	}
+    // 默认隐含的操作,将new创建的对象赋值给this
+    this.name = name;
+    this.job = job;
+    this.sayHello = function () {
+        console.log('hello');
+    }
 }
 
 var winter = new Person("winter", "coding");

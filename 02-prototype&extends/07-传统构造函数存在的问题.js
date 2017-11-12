@@ -19,12 +19,12 @@
 // 将函数赋值给构造函数内部的方法,这样内存内只存在一个方法,对象内部的方法名全都指向该方法
 
 function studyMethod() {
-	console.log(this.name + "goodgoodstudy");
+    console.log(this.name + "goodgoodstudy");
 }
 
 function Student(name) {
-	this.name = name;
-	this.skill = studyMethod;
+    this.name = name;
+    this.skill = studyMethod;
 }
 
 var zzw = new Student('zzw');

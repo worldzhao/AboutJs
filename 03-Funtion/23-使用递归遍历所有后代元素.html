@@ -1,312 +1,312 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>递归</title>
-<script type="text/javascript">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>递归</title>
+    <script type="text/javascript">
 
 
+        window.onload = function () {
+            var allchild = [];//用于存放后代节点的数组
 
-	window.onload=function(){
-		var allchild=[];//用于存放后代节点的数组
+            function getChildren(node) {
+                var nodeList = node.children;
+                if (nodeList.length === 0) return;//递归结束标志
+                for (var i = 0; i < nodeList.length; i++) {
+                    allchild.push(nodeList[i]);//存放后代节点
+                    getChildren(nodeList[i]);
+                }
+                return allchild;
+            }
 
-		function getChildren(node){
-			var nodeList=node.children;
-			if(nodeList.length==0)return;//递归结束标志
-			for(var i=0;i<nodeList.length;i++){
-				allchild.push(nodeList[i]);//存放后代节点
-				getChildren(nodeList[i]);
-			}
-			return allchild;
-		}
-
-		var allchild=getChildren(document.body);
-		for(var i=0;i<allchild.length;i++){
-			allchild[i].style.border="1px solid red";
-		}	}
-</script>
+            var allchild = getChildren(document.body);
+            for (var i = 0; i < allchild.length; i++) {
+                allchild[i].style.border = "1px solid red";
+            }
+        }
+    </script>
 </head>
 <body>
-    <div>1div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>2div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>3div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>4div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>5div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>6div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>7div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>8div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>9div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <div>10div
-    	<p>1p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>2p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>3p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>4p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    	<p>5p
-    		<span>1span</span>
-    		<span>2span</span>
-    		<span>3span</span>
-    	</p>
-    </div>
-    <p>我是第1个p标签</p>
-    <p>我是第2个p标签</p>
-    <p>我是第3个p标签</p>
-    <p>我是第4个p标签</p>
-    <p>我是第5个p标签</p>
-    <p>我是第6个p标签</p>
-    <p>我是第7个p标签</p>
-    <p>我是第8个p标签</p>
-    <p>我是第9个p标签</p>
-    <p>我是第10个p标签</p>
+<div>1div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>2div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>3div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>4div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>5div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>6div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>7div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>8div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>9div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<div>10div
+    <p>1p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>2p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>3p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>4p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+    <p>5p
+        <span>1span</span>
+        <span>2span</span>
+        <span>3span</span>
+    </p>
+</div>
+<p>我是第1个p标签</p>
+<p>我是第2个p标签</p>
+<p>我是第3个p标签</p>
+<p>我是第4个p标签</p>
+<p>我是第5个p标签</p>
+<p>我是第6个p标签</p>
+<p>我是第7个p标签</p>
+<p>我是第8个p标签</p>
+<p>我是第9个p标签</p>
+<p>我是第10个p标签</p>
 </body>
 </html>
