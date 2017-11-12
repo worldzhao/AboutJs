@@ -14,10 +14,7 @@
 	/*
 	方法一:
 	function unique(){
-		var arr=[];
-		for(var k=0;k<arguments.length;k++){
-			arr[k]=arguments[k];
-		}
+		var arr = [].slice.call(arguments);
 		for(var i=0;i<arr.length;i++){
 			for(var j=i+1;j<arr.length;j++){
 				if(arr[i]===arr[j]){
@@ -43,10 +40,8 @@
     console.log(unique(1,1,2,2,3,3));//1,2,3
     */
 
-    var distinct=new Function(`var arr=[];
-		for(var k=0;k<arguments.length;k++){
-			arr[k]=arguments[k];
-		}
+    var distinct=new Function(`
+		var arr = [].slice.call(arguments);
 		for(var i=0;i<arr.length;i++){
 			for(var j=i+1;j<arr.length;j++){
 				if(arr[i]===arr[j]){
